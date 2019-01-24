@@ -240,8 +240,175 @@
                 <div class="styleButton">
                     <button class="noBtns removeLableBtn" style="background:#242424;">移除该容器</button>
                     <button class="noBtns clearLableBtn">清除浮动</button>
-                    <button class="noBtns removeLableBtn">编辑该容器</button>
+                    <button class="noBtns EditLableBtn">编辑该容器</button>
                 </div>
+
+
+
+                <div class="BlockItemsCon">
+                    <h2 class="BIH2">修改容器：</h2>
+                    <div class="blockItemsSelect">
+                        <h3 class="BIH3 BIH3T">
+                            <span id="setDIVLableE" class="emptyHtml">选择标签</span>
+                            <img src="public/img/down.png" alt="">
+                        </h3>
+                        <ul class="blockItemsS" tabindex="0"></ul>
+                    </div>
+                    <div class="blockWH">
+                        <span>宽度</span>
+                        <input type="text" class="BWidth emptyVal" id="setStyleWidthE">
+                    </div>
+                    <div class="blockWH">
+                        <span>高度</span>
+                        <input type="text" class="BHeight emptyVal" id="setStyleHeightE">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="BlockItemsCon">
+                    <h2 class="BIH2S">样式调整：</h2>
+                    <div class="styleBSty">
+                        <h2 class="BIH2">边框：</h2>
+                        <div class="blockWH">
+                            <span>宽度</span>
+                            <input type="text" class="BHeight emptyVal" id="setStyleBW"E>
+                        </div>
+                        <div class="blockWH" style="width: 100px;">
+                            <h2 class="BIH2">类型</h2>
+                            <div class="blockItemsSelect" style="float: left;margin-left: 5px;">
+                                <h3 class="BIH3 BIH3B" style="width: 65px;">
+                                    <span style="width: 60%;" id="setStyleBSE" class="emptyHtml">类型</span>
+                                    <img src="public/img/down.png" alt="">
+                                </h3>
+                                <ul class="blockItemsB" tabindex="0"></ul>
+                            </div>
+                        </div>
+                        <div class="blockWH">
+                            <span>颜色</span>
+                            <input type="text" class="BHeight emptyVal" id="setStyleBCE">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="styleBSty">
+                        <h2 class="BIH2">背景：</h2>
+                        <div class="blockWH">
+                            <span>颜色</span>
+                            <input type="text" class="BHeight emptyVal" id="setStyleBackgroundE">
+                        </div>
+                        <div class="blockWH">
+                            <span>图片</span>
+                            <div class="uploadBGFile">
+                                <input type="file" class="BHeight BHeightFile">
+                                <img src="public/img/uploadImg.png" alt="">
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="styleBSty">
+                        <h2 class="BIH2">阴影：</h2>
+                        <div class="blockWH blockWHT">
+                            <span>X轴</span>
+                            <input type="text" class="BHeight emptyVal" id="setStyleBSXE">
+                        </div>
+                        <div class="blockWH blockWHT">
+                            <span>Y轴</span>
+                            <input type="text" class="BHeight emptyVal" id="setStyleBSYE">
+                        </div>
+                        <div class="blockWH blockWHT">
+                            <span>模糊</span>
+                            <input type="text" class="BHeight emptyVal" id="setStyleBSmhE">
+                        </div>
+                        <div class="blockWH" style="margin-left: 35px;">
+                            <span>尺寸</span>
+                            <input type="text" class="BHeight emptyVal" id="setStyleBSSizeE">
+                        </div>
+                        <div class="blockWH">
+                            <span>颜色</span>
+                            <input type="text" class="BHeight emptyVal" id="setStyleBSColorE">
+                        </div>
+                        <div class="blockWH" style="margin-left: 7px;">
+                            <span>内外</span>
+                            <input type="text" class="BHeight emptyVal" id="setStyleBSnwE">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="styleBSty">
+                        <h2 class="BIH2">margin：</h2>
+                        <div class="blockWH blockWHV" style="margin-left: 10px;">
+                            <input type="text" class="BHeight emptyVal" id="setStyleMTE">
+                        </div>
+                        <div class="blockWH blockWHV">
+                            <input type="text" class="BHeight emptyVal" id="setStyleMRE">
+                        </div>
+                        <div class="blockWH blockWHV">
+                            <input type="text" class="BHeight emptyVal" id="setStyleMBE">
+                        </div>
+                        <div class="blockWH blockWHV">
+                            <input type="text" class="BHeight emptyVal" id="setStyleMLE">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="styleBSty">
+                        <h2 class="BIH2">padding：</h2>
+                        <div class="blockWH blockWHV">
+                            <input type="text" class="BHeight emptyVal" id="setStylePTE">
+                        </div>
+                        <div class="blockWH blockWHV">
+                            <input type="text" class="BHeight emptyVal" id="setStylePRE">
+                        </div>
+                        <div class="blockWH blockWHV">
+                            <input type="text" class="BHeight emptyVal" id="setStylePBE">
+                        </div>
+                        <div class="blockWH blockWHV">
+                            <input type="text" class="BHeight emptyVal" id="setStylePLE">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="styleBSty">
+                        <h2 class="BIH2">font：</h2>
+                        <div class="blockWH">
+                            <span>size</span>
+                            <input type="text" class="BHeight emptyVal" id="setStyleFontSE">
+                        </div>
+                        <div class="blockWH" style="width: 90px;">
+                            <span>color</span>
+                            <input type="text" class="BHeight emptyVal" id="setStyleFontCE">
+                        </div>
+                        <div class="blockWH" style="width: 90px;">
+                            <span>bold</span>
+                            <input type="text" class="BHeight emptyVal" id="setStyleFontBE">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="styleBSty">
+                        <h2 class="BIH2">line-height：</h2>
+                        <div class="blockWH">
+                            <input type="text" class="BHeight emptyVal" id="setStyleLineHE">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="styleBSty">
+                        <h2 class="BIH2">text-align:</h2>
+                        <div class="blockWH">
+                            <input type="text" class="BHeight emptyVal" id="setStyleTextAlignE">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="BlockItemsCon">
+                    <h2 class="BIH2S">数据添加：</h2>
+                    <div class="styleBSty">
+                        <textarea class="styleText emptyVal" id="setStylesDataE"></textarea>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="styleButton">
+                    <button class="noBtn noBtnEvt">取消</button>
+                    <button class="yesBtn yesBtnEvt">确定</button>
+                </div>
+
+
 
 
             </div>

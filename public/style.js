@@ -99,13 +99,18 @@ $(function () {
 	$(".clearLableBtn").click(function () {
 		$(OBJS).append("<div class='clear'></div>");
 		
-	})
+	});
 	// 编辑标签
-	
-	
+	FStyleEdit
+	$(".EditLableBtn").click(function () {
+		FStyleEdit()
+		
+	})
 });
 var showFlage = true;
+// document中点击的标签对象
 var OBJS = null;
+
 
 // 下拉列表
 function setSelect(Lable, obj, Arr) {
@@ -221,11 +226,9 @@ function setHtmlModel(Obj) {
 		getMargin.left = ''
 	}
 	setStyleA.margin = getMargin.top + " " + getMargin.right + " " + getMargin.bottom + " " + getMargin.left;
-	console.log(setStyleA.margin);
 	var addStyleTime = new Date().getTime();
 	var AddStyle = 'AddClass' + addStyleTime;
 	$(Obj).append('<' + getLableS + ' class=' + AddStyle + '>' + setStyleA.LableData + '</' + getLableS + '>');
-	
 	$('.' + AddStyle).css({
 		"width": setStyleA.width,
 		"height": setStyleA.height,
@@ -239,5 +242,12 @@ function setHtmlModel(Obj) {
 		"lineHeight": setStyleA.lineHeight,
 		"textAlign": setStyleA.TextAlign
 	});
-	
 }
+
+// 编辑父级标签
+function FStyleEdit() {
+
+}
+
+
+
