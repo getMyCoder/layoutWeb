@@ -54,8 +54,13 @@ img{vertical-align: top}
 .menuBlock{overflow-x: hidden;overflow-y: auto}
 .PopBtns{border: 1px solid #ccc;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;height: 30px;width: 100px;cursor: pointer;outline: none;}
 .noBtns{background: #5b5a5a;color: #ccc;display: block;margin: 8px 0;}
+.noBtns:hover{background: #242424;}
+.FlageEditChange{display: none;}
+.flageShow:hover{background: #242424 !important;}
 
 
-
+.blockItemsFB{background: #878787; outline: none;position: absolute;top: 27px;left: 0;width: 100%;display: none;}
+.blockItemsFB li{line-height: 20px;color: #ccc;font-size: 14px;padding-left: 5px;}
+.blockItemsFB li:hover{background: #ccc;color: #666;cursor: pointer;}
 
 

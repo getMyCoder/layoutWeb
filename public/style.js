@@ -64,6 +64,10 @@ $(function () {
 	$(".BIH3B").click(function () {
 		setSelect('blockItemsB', this, CreateLableBorder)
 	});
+	var CreateLableFloat = ['left', 'right', 'none'];
+	$(".BIH3F").click(function () {
+		setSelect('blockItemsFB', this, CreateLableFloat)
+	});
 	// ---------------------------功能框menu-------------------------
 	$(".menuBlock .BlockItems").eq(0).show();
 	$(".sBMenuLi li").each(function (index) {
@@ -79,6 +83,7 @@ $(function () {
 	});
 	$("#noPopMove").click(function () {
 		showFlage = false;
+		$(".flageShow").html("不显示")
 	});
 	$(".menuBlock").css({
 		"maxHeight": (DH - $(".getStyleBlock").height() - $(".setStyleLogo").height() - $(".sBMenu").height()) + "px"
@@ -98,19 +103,41 @@ $(function () {
 	});
 	$(".clearLableBtn").click(function () {
 		$(OBJS).append("<div class='clear'></div>");
-		
+		Kui.promptBox({
+			TipsMsg: "清除完成",
+			TipsType: "info"
+		})
 	});
 	// 编辑标签
-	FStyleEdit
 	$(".EditLableBtn").click(function () {
-		FStyleEdit()
-		
+		FStyleEdit();
+		$(".FlageEditChange").toggle();
+	});
+	// 确定修改
+	$(".yesBtnEvtEdit").click(function () {
+		changeEditLable();
+		$(".fatherLable").val(" ");
+		Kui.promptBox({
+			TipsMsg: "修改成功",
+			TipsType: "info"
+		})
+	});
+	$(".flageShow").click(function () {
+		if (showFlage) {
+			showFlage = false;
+			$(".flageShow").html("不显示")
+		} else {
+			showFlage = true;
+			$(".flageShow").html("显示")
+		}
 	})
 });
+
+
+// 是否显示弹窗
 var showFlage = true;
 // document中点击的标签对象
 var OBJS = null;
-
 
 // 下拉列表
 function setSelect(Lable, obj, Arr) {
@@ -140,6 +167,7 @@ function setLoop(itemsLength) {
 		itemsSom1 = itemsLength.children().eq(i);
 		itemsSom1.click(function () {
 			AddFatherLableInt(this);
+			FStyleEdit(this);
 			OBJS = this;
 			return false
 		});
@@ -148,6 +176,7 @@ function setLoop(itemsLength) {
 				itemsSom2 = itemsSom1.children().eq(j);
 				itemsSom2.click(function () {
 					AddFatherLableInt(this);
+					FStyleEdit(this);
 					OBJS = this;
 					return false
 				});
@@ -157,7 +186,6 @@ function setLoop(itemsLength) {
 			}
 		}
 	}
-	
 }
 
 // 标签转为字符串
@@ -181,15 +209,6 @@ function AddFatherLableInt(Obj) {
 		getFatherClassName = $(Obj).attr('class')
 	}
 	$(".fatherLable").val($(Obj).get(0).tagName + ";(class:" + getFatherClassName + ")");
-	// $(".yesBtnEvt").click(function () {
-	// 	setHtmlModel(Obj);
-	// 	Obj = null;
-	// 	$("#fatherLable").val(" ")
-	// });
-	// $(".noBtnEvt").click(function () {
-	// 	$(".emptyVal").val("");
-	// 	$(".emptyHtml").html("")
-	// })
 }
 
 // 父级标签中添加属性方法
@@ -214,7 +233,8 @@ function setHtmlModel(Obj) {
 		fontBold: $("#setStyleFontB").val(),
 		lineHeight: $("#setStyleLineH").val() + "px",
 		TextAlign: $("#setStyleTextAlign").val(),
-		LableData: $("#setStylesData").val()
+		LableData: $("#setStylesData").val(),
+		float: $("#setStyleFLS").html(),
 	};
 	if ($("#setStyleMR").val() == 'auto') {
 		getMargin.right = 'auto'
@@ -240,13 +260,86 @@ function setHtmlModel(Obj) {
 		"color": setStyleA.fontColor,
 		"fontWeight": setStyleA.fontBold,
 		"lineHeight": setStyleA.lineHeight,
-		"textAlign": setStyleA.TextAlign
+		"textAlign": setStyleA.TextAlign,
+		'float': setStyleA.float,
 	});
 }
 
-// 编辑父级标签
+// 获取父级标签属性
 function FStyleEdit() {
+	$("#setStyleWidthE").val(parseFloat($(OBJS).width()));
+	$("#setStyleHeightE").val(parseFloat($(OBJS).height()));
+	$("#setStyleBWE").val(parseFloat($(OBJS).css('borderWidth')));
+	$("#setStyleBSE").html($(OBJS).css('borderStyle'));
+	$("#setStyleBCE").val($(OBJS).css('borderColor'));
+	$("#setStyleBackgroundE").val($(OBJS).css('backgroundColor'));
+	$("#setStyleMTE").val(parseFloat($(OBJS).css('marginTop')));
+	$("#setStyleMRE").val(parseFloat($(OBJS).css('marginRight')));
+	$("#setStyleMBE").val(parseFloat($(OBJS).css('marginBottom')));
+	$("#setStyleMLE").val(parseFloat($(OBJS).css('marginLeft')));
+	$("#setStylePTE").val(parseFloat($(OBJS).css('paddingTop')));
+	$("#setStylePRE").val(parseFloat($(OBJS).css('paddingRight')));
+	$("#setStylePBE").val(parseFloat($(OBJS).css('paddingBottom')));
+	$("#setStylePLE").val(parseFloat($(OBJS).css('paddingLeft')));
+	$("#setStyleFontSE").val(parseFloat($(OBJS).css('fontSize')));
+	$("#setStyleFontCE").val($(OBJS).css('color'));
+	$("#setStyleFontBE").val($(OBJS).css('fontWeight'));
+	$("#setStyleLineHE").val(parseFloat($(OBJS).css('lineHeight')));
+	$("#setStyleTextAlignE").val($(OBJS).css('textAlign'));
+	$("#setStylesDataE").val($(OBJS).html());
+	$("#setStyleFLSE").html($(OBJS).css('float'))
+}
 
+// 编辑父级标签-修改
+function changeEditLable() {
+	var getMargin = {
+		top: $("#setStyleMTE").val() + "px",
+		right: $("#setStyleMRE").val() + "px",
+		bottom: $("#setStyleMBE").val() + "px",
+		left: $("#setStyleMLE").val() + "px"
+	};
+	var setStyleA = {
+		width: $("#setStyleWidthE").val() + "px",
+		height: $("#setStyleHeightE").val() + "px",
+		border: $("#setStyleBWE").val() + "px " + $("#setStyleBSE").html() + " " + $("#setStyleBCE").val(),
+		background: $("#setStyleBackgroundE").val(),
+		boxShadow: $("#setStyleBSXE").val() + "px " + $("#setStyleBSYE").val() + "px " + $("#setStyleBSmhE").val() + "px " + $("#setStyleBSSizeE").val() + "px " + $("#setStyleBSColorE").val() + " " + $("#setStyleBSnwE").val(),
+		margin: null,
+		padding: $("#setStylePTE").val() + "px " + $("#setStylePRE").val() + "px " + $("#setStylePBE").val() + "px " + $("#setStylePLE").val() + "px",
+		fontSize: $("#setStyleFontSE").val() + "px",
+		fontColor: $("#setStyleFontCE").val(),
+		fontBold: $("#setStyleFontBE").val(),
+		lineHeight: $("#setStyleLineHE").val() + "px",
+		TextAlign: $("#setStyleTextAlignE").val(),
+		float: $("#setStyleFLSE").html(),
+		LableData: $("#setStylesDataE").val()
+	};
+	if ($("#setStyleMRE").val() == 'auto') {
+		getMargin.right = 'auto'
+	}
+	if ($("#setStyleMBE").val() == '') {
+		getMargin.bottom = ''
+	}
+	if ($("#setStyleMLE").val() == '') {
+		getMargin.left = ''
+	}
+	setStyleA.margin = getMargin.top + " " + getMargin.right + " " + getMargin.bottom + " " + getMargin.left;
+	console.log(setStyleA.margin);
+	$(OBJS).css({
+		"width": setStyleA.width,
+		"height": setStyleA.height,
+		"border": setStyleA.border,
+		"background": setStyleA.background,
+		"boxShadow": setStyleA.boxShadow,
+		"margin": setStyleA.margin,
+		"fontSize": setStyleA.fontSize,
+		"color": setStyleA.fontColor,
+		"fontWeight": setStyleA.fontBold,
+		"lineHeight": setStyleA.lineHeight,
+		"textAlign": setStyleA.TextAlign,
+		"float": setStyleA.float
+	});
+	$(OBJS).html(setStyleA.LableData)
 }
 
 
